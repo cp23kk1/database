@@ -1,6 +1,8 @@
 # Use the official MySQL base image from Docker Hub
 FROM mysql:8
 
+# Set environment variables
+ENV MYSQL_ROOT_PASSWORD=cp23kk1!_BJY
 
 
 # Copy SQL scripts to initialize the database
