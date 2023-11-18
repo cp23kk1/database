@@ -17,6 +17,7 @@ pipeline {
         stage('Build DB Images') {
             steps {
                 script {
+                    sh "echo ${env.DB_USER}"
                     sh "echo ${params.deployEnvironment}"
                     sh "docker build -t ${SQL_IMAGE_NAME}:${IMAGE_TAG} ."
                 }
