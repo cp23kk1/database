@@ -26,7 +26,7 @@ DROP TABLE IF EXISTS `vocaverse`.`user` ;
 CREATE TABLE IF NOT EXISTS `vocaverse`.`user` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `email` VARCHAR(320) NULL,
-  `role` ENUM('admin', 'user') NOT NULL,
+  `role` ENUM('admin', 'user','guest') NOT NULL,
   `display_name` VARCHAR(255) NULL,
   `is_active` BOOLEAN NOT NULL DEFAULT TRUE,
   `image` VARCHAR(255) NULL,
