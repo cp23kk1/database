@@ -7,7 +7,6 @@ pipeline {
 
     environment {
         SQL_IMAGE_NAME = "vocaverse-db"
-        IMAGE_TAG = "latest"
         CONTAINER_NAME = "vocaverse-db"
         HOST_PATH = "/home/sysadmin/mysql/"
     }
@@ -18,7 +17,7 @@ pipeline {
             steps {
                 script {
                     sh "echo ${params.deployEnvironment}"
-                    sh "docker build -t ${SQL_IMAGE_NAME}:${IMAGE_TAG} ."
+                    sh "docker build -t ${SQL_IMAGE_NAME}:${GIT_TAG} ."
                 }
             }
         }
