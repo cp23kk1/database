@@ -42,7 +42,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                  sh "docker run -d -v ${HOST_PATH}${params.deployEnvironment}:/var/lib/mysql  --name ${CONTAINER_NAME}-${params.deployEnvironment} ${SQL_IMAGE_NAME}:${IMAGE_TAG}"
+                  sh "docker run -d -v ${HOST_PATH}${params.deployEnvironment}:/var/lib/mysql  --name ${CONTAINER_NAME}-${params.deployEnvironment} ${SQL_IMAGE_NAME}:${GIT_TAG}"
                 }
             }
         }
