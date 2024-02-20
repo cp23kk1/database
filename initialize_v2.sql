@@ -87,6 +87,7 @@ CREATE TABLE IF NOT EXISTS `vocaverse`.`vocabulary` (
   `id` VARCHAR(36) NOT NULL,
   `vocabulary` VARCHAR(256) NOT NULL,
   `meaning` VARCHAR(256) NOT NULL,
+  `definition` VARCHAR(256) NOT NULL,
   `difficulty_id` INT NULL,
   `pos` VARCHAR(256) NOT NULL,
   `tag` VARCHAR(256) NOT NULL,
