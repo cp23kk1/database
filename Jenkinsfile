@@ -7,21 +7,12 @@ pipeline {
 
     environment {
         SQL_IMAGE_NAME = "vocaverse-db"
-        IMAGE_TAG = "latest"
         CONTAINER_NAME = "vocaverse-db"
         HOST_PATH = "/home/sysadmin/mysql/"
     }
 
     stages {
 
-        stage('Build DB Images') {
-            steps {
-                script {
-                    sh "echo ${params.deployEnvironment}"
-                    sh "docker build -t ${SQL_IMAGE_NAME}:${IMAGE_TAG} ."
-                }
-            }
-        }
         stage ('Remove container'){
             steps {
               script {
@@ -40,10 +31,19 @@ pipeline {
             }
         }
 
+        stage('Build DB Images') {
+            steps {
+                script {
+                    sh "echo ${params.deployEnvironment}"
+                    sh "docker build -t ${SQL_IMAGE_NAME}:${GIT_TAG} ."
+                }
+            }
+        }
+
         stage('Deploy') {
             steps {
                 script {
-                  sh "docker run -d -v ${HOST_PATH}${params.deployEnvironment}:/var/lib/mysql  --name ${CONTAINER_NAME}-${params.deployEnvironment} ${SQL_IMAGE_NAME}:${IMAGE_TAG}"
+                  sh "docker run -d -v ${HOST_PATH}${params.deployEnvironment}:/var/lib/mysql  --name ${CONTAINER_NAME}-${params.deployEnvironment} ${SQL_IMAGE_NAME}:${GIT_TAG}"
                 }
             }
         }
