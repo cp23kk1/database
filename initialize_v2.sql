@@ -132,8 +132,8 @@ CREATE TABLE IF NOT EXISTS `vocaverse`.`sentence` (
   `passage_id` VARCHAR(36) NULL,
   `sequence` INT NULL,
   `sentence` VARCHAR(512) NOT NULL,
-  `meaning` VARCHAR(256) NOT NULL,
-  `tense` JSON NULL,
+  `meaning` VARCHAR(1024) NOT NULL,
+  `tense` VARCHAR(512) NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_sentence_passage1_idx` (`passage_id` ASC) VISIBLE,
   CONSTRAINT `fk_sentence_passage1`
