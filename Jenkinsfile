@@ -13,14 +13,6 @@ pipeline {
 
     stages {
 
-        stage('Build DB Images') {
-            steps {
-                script {
-                    sh "echo ${params.deployEnvironment}"
-                    sh "docker build -t ${SQL_IMAGE_NAME}:${GIT_TAG} ."
-                }
-            }
-        }
         stage ('Remove container'){
             steps {
               script {
@@ -36,6 +28,15 @@ pipeline {
                         // Add more steps or logic here if needed
                     }
               }
+            }
+        }
+
+        stage('Build DB Images') {
+            steps {
+                script {
+                    sh "echo ${params.deployEnvironment}"
+                    sh "docker build -t ${SQL_IMAGE_NAME}:${GIT_TAG} ."
+                }
             }
         }
 
